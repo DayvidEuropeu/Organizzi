@@ -1,0 +1,16 @@
+{
+  
+  "name": "organizzi",
+  "main": "src/worker.js",
+  "compatibility_date": "2024-07-22",
+  "assets": {
+    "directory": "./public"
+  },
+  "d1_databases": [],
+  "observability": {
+    "logs": {
+      "enabled": true
+    }
+  }
+
+}
