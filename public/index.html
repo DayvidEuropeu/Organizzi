@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organizzi Contabilidade</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #e5d5c8;
+        }
+
+        /* MENU FIXO */
+        .menu {
+            background-color: #9c6551;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu h1 {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .cabecalho {
+            text-align: center;
+            padding: 100px 20px 40px;
+        }
+
+        .conteudo-geral {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .bloco {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
+        }
+
+        .bloco:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .bloco:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .bloco:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .bloco:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .bloco-reverso {
+            flex-direction: row-reverse;
+        }
+
+        .bloco img {
+            max-width: 100%;
+            width: 350px;
+            border-radius: 12px;
+        }
+
+        .texto {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .texto h2 {
+            font-size: 24px;
+            color: #9c6551;
+            margin-bottom: 10px;
+        }
+
+        .texto p,
+        .texto li {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-contato {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+
+        .input-contato,
+        .botao-enviar {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        .input-contato {
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+        }
+
+        .botao-enviar {
+            background-color: #9c6551;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .botao-enviar:hover {
+            background-color: #7a4c3f;
+        }
+
+        /* RODAPÉ */
+        .rodape {
+            background-color: #9c6551;
+            color: #fff;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .rodape-conteudo {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .rodape-conteudo div {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .rodape-conteudo h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .rodape-conteudo p,
+        .rodape-conteudo a {
+            font-size: 16px;
+            color: #f0e6e2;
+            text-decoration: none;
+        }
+
+        .rodape-conteudo a:hover {
+            text-decoration: underline;
+        }
+
+        .rodape-copy {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 30px;
+            color: #e5d5c8;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 10px;
+        }
+
+        /* WHATSAPP FLUTUANTE */
+        .whatsapp-flutuante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .whatsapp-flutuante img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-flutuante img:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .bloco {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .texto {
+                text-align: center;
+            }
+
+            .menu h1 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .rodape-conteudo {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU FIXO -->
+    <div class="menu">
+        <h1>Organizi Contabilidade</h1>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <img src="imagens/conta.jpeg" alt="Logo da Empresa" width="400" />
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo-geral">
+
+        <!-- BLOCO 1 -->
+        <section class="bloco">
+            <img src="imagens/foto1.jpeg" alt="Descrição" />
+            <div class="texto">
+                <h2>Descrição</h2>
+                <p>Somos uma empresa de contabilidade especializada em serviços de contabilidade, impostos e consultoria
+                    financeira.</p>
+            </div>
+        </section>
+
+        <!-- BLOCO 2 -->
+        <section class="bloco bloco-reverso">
+            <img src="imagens/foto2.jpeg" alt="Serviços" />
+            <div class="texto">
+                <h2>Serviços</h2>
+                <ul>
+                    <li>Contabilidade</li>
+                    <li>Impostos</li>
+                    <li>Consultoria financeira</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- BLOCO 3 -->
+        <section class="bloco">
+            <img src="imagens/foto3.jpeg" alt="Contato" />
+            <div class="texto">
+                <h2>Contato</h2>
+                <p>Deixe seus dados que entraremos em contato!</p>
+                <form class="form-contato">
+                    <input type="text" class="input-contato" placeholder="Nome" />
+                    <input type="email" class="input-contato" placeholder="E-mail" />
+                    <input type="tel" class="input-contato" placeholder="Telefone" />
+                    <button type="submit" class="botao-enviar">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <div>
+                <h3>Localização</h3>
+                <p>Brasília - DF<br>Asa Sul, Setor Comercial Sul</p>
+                <!-- MAPA -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12219.934160512122!2d-47.89594450715329!3d-15.794229327232507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3baf0f8164b9%3A0x8829ebcdbe1783d7!2sAsa%20Sul%2C%20Bras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1721900984384!5m2!1spt-BR!2sbr"
+                    width="100%" height="200" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div>
+                <h3>Contato</h3>
+                <p>E-mail: contato@contabilidade.com.br<br>
+                    WhatsApp: (61) 91234-5678</p>
+            </div>
+            <div>
+                <h3>Redes Sociais</h3>
+                <p>
+                    <a href="#" target="_blank">Instagram</a><br>
+                    <a href="#" target="_blank">Facebook</a><br>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </p>
+            </div>
+        </div>
+        <div class="rodape-copy">
+            &copy; 2025 Contabilidade Inteligente. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- ÍCONE WHATSAPP FLUTUANTE -->
+    <div class="whatsapp-flutuante">
+        <a href="https://wa.me/5561912345678" target="_blank" title="Fale conosco no WhatsApp">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        </a>
+    </div>
+
+</body>
+
+</html>
