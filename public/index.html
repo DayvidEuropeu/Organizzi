@@ -5,13 +5,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Organizzi Contabilidade</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" />
-
     <style>
-        /* Fontes */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        /* ALTERAÇÕES AQUI: Paleta de Cores e Fontes */
+        /* Cores inspiradas na LH Solution */
+        :root {
+            --cor-primaria: rgba(151, 87, 76, 0.7);
+            /* Azul vibrante para botões e destaques */
+            --cor-secundaria: #e5d5c8;
+            /* Azul mais escuro para hover */
+            --cor-fundo: #e5d5c8;
+            /* Azul clarinho, quase branco, para o fundo */
+            --cor-texto-principal: #000000;
+            --cor-texto-claro: #fff;
+            --cor-menu-fundo: rgba(151, 87, 76, 0.7);
+            /* Azul escuro para o menu */
+            --cor-bloco-fundo: #e5d5c8;
+            /* Fundo dos blocos */
+            --cor-rodape-fundo: rgba(151, 87, 76, 0.7);
+            /* Fundo do rodapé igual ao menu */
+            --cor-rodape-texto: #f7e0f6;
+            /* Texto claro no rodapé */
+            --cor-sombra: rgba(0, 0, 0, 0.1);
+        }
 
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+PL:wght@100..400&display=swap');
+        /* Fontes: Escolhi 'Montserrat' para títulos (similar à usada) e 'Open Sans' para corpo */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap');
 
         * {
             box-sizing: border-box;
@@ -21,34 +39,117 @@
 
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #e5d5c8;
+            /* ALTERAÇÕES AQUI: Usando Open Sans para o corpo */
+            background-color: var(--cor-fundo);
+            /* ALTERAÇÕES AQUI: Nova cor de fundo */
+            line-height: 1.6;
+            padding-top: 80px; /* Mantive o padding-top para o menu fixo */
         }
 
-        /* MENU FIXO */
+        /* MENU FIXO - ESTADO INICIAL (TRANSPARENTE) */
         .menu {
-            background-color: #9c6551;
-            padding: 15px 30px;
-            position: fixed;
+            background-color:rgba(151, 87, 76, 0.7); /* Alterado para transparente */
+            padding: 21px 30px;
+            position: fixed; 
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: none; /* Sem sombra inicialmente */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.5s ease, box-shadow 0.9s ease; /* Transição suave */
+        }
+
+        /* NOVA CLASSE PARA O MENU AO ROLAR */
+        .menu.scrolled {
+            background-color: var(--cor-primaria); /* Cor original ao rolar */
+            box-shadow: 0 4px 9px var(--cor-sombra); /* Sombra ao rolar */
         }
 
         .menu h1 {
-            color: #fff;
+            color: var(--cor-texto-claro);
             font-size: 24px;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
         }
 
+        /* ALTERAÇÕES AQUI: Estilos para a navegação do menu */
+        .menu nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+            /* Espaçamento entre os itens do menu */
+        }
+
+        .menu nav ul li a {
+            color: var(--cor-rodape-texto);
+            /* Cor dos links do menu */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: color 0.3s ease;
+        }
+
+        .menu nav ul li a:hover {
+            color: #ffffff;
+            /* Cor ao passar o mouse */
+        }
+
+        /* CABEÇALHO (HERO SECTION) */
         .cabecalho {
             text-align: center;
-            padding: 10px;
+            padding: 12px 0px 30px;
+            background: linear-gradient(rgba(151, 87, 76, 0.7), #e5d5c8), url('../imagens/fundo-hero.jpeg') no-repeat center center/cover;
+            color: var(--cor-texto-claro);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 420px;
         }
+
+        .cabecalho img {
+            display: none;
+        }
+
+        .cabecalho h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+
+        .cabecalho p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .cabecalho .btn-primario {
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cabecalho .btn-primario:hover {
+            background-color: var(--cor-secundaria);
+        }
+
 
         .conteudo-geral {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             gap: 60px;
@@ -59,18 +160,19 @@
             align-items: center;
             gap: 30px;
             flex-wrap: wrap;
-            background-color: #fff;
+            background-color: var(--cor-bloco-fundo);
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px var(--cor-sombra);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             opacity: 0;
             animation: fadeIn 0.8s forwards;
+            border: 1px solid #eee;
         }
 
         .bloco:hover {
-            transform: scale(1.01);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .bloco:nth-child(1) {
@@ -97,8 +199,9 @@
 
         .bloco img {
             max-width: 100%;
-            width: 350px;
-            border-radius: 12px;
+            width: 380px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .texto-primario {
@@ -107,61 +210,81 @@
         }
 
         .texto-primario h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
 
-            font-family: "Playfair Display", serif;
-            font-optical-sizing: auto;
-            font-style: normal;
-            font-size: 24px;
-            color: #9c6551;
+        .texto-secundario {
+            font-size: 18px;
+            color: var(--cor-texto-principal);
             margin-bottom: 10px;
         }
 
-        .texto p,
-        .texto li {
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 10px;
+        .texto-primario ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .texto-primario ul li:before {
+            content: "✓";
+            color: var(--cor-primaria);
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-weight: bold;
         }
 
         .form-contato {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-width: 400px;
-            margin-top: 10px;
+            gap: 15px;
+            max-width: 450px;
+            margin-top: 20px;
         }
 
         .input-contato,
         .botao-enviar {
-            padding: 12px;
-            font-size: 16px;
-            border-radius: 30px;
-            border: none;
+            padding: 15px;
+            font-size: 17px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
             box-sizing: border-box;
         }
 
         .input-contato {
-            background: #f8f8f8;
-            border: 1px solid #ccc;
+            background: #fdfdfd;
+            border-color: #ccc;
+        }
+
+        .input-contato:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
         }
 
         .botao-enviar {
-            background-color: #9c6551;
-            color: #fff;
+            background-color: var(--cor-primaria);
+            color: var(--cor-texto-claro);
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            border: none;
         }
 
         .botao-enviar:hover {
-            background-color: #7a4c3f;
+            background-color: var(--cor-secundaria);
+            transform: translateY(-2px);
         }
 
         /* RODAPÉ */
         .rodape {
-            background-color: #9c6551;
-            color: #fff;
-            padding: 40px 20px 20px;
-            margin-top: 60px;
+            background-color: var(--cor-rodape-fundo);
+            color: var(--cor-rodape-texto);
+            padding: 50px 20px 20px;
+            margin-top: 80px;
         }
 
         .rodape-conteudo {
@@ -170,70 +293,93 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
         }
 
         .rodape-conteudo div {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
         }
 
         .rodape-conteudo h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--cor-texto-claro);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .loc {
-            margin: 9px 0px 0px 0px;
+            margin: 15px 0px 0px 0px;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .rodape-conteudo p,
         .rodape-conteudo a {
             font-size: 16px;
-            color: #f0e6e2;
+            color: var(--cor-rodape-texto);
             text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .rodape-conteudo a {
+            display: inline-block;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
         }
 
         .rodape-conteudo a:hover {
+            color: #ffffff;
             text-decoration: underline;
         }
 
         .rodape-copy {
             text-align: center;
             font-size: 14px;
-            margin-top: 30px;
-            color: #e5d5c8;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 10px;
+            margin-top: 40px;
+            color: var(--cor-rodape-texto);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 15px;
         }
 
         /* WHATSAPP FLUTUANTE */
         .whatsapp-flutuante {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             z-index: 999;
         }
 
         .whatsapp-flutuante img {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .whatsapp-flutuante img:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ALTERAÇÕES AQUI: Media Queries para responsividade */
+        @media (max-width: 992px) {
+            .cabecalho h1 {
+                font-size: 40px;
+            }
+
+            .cabecalho p {
+                font-size: 18px;
+            }
         }
 
         @media (max-width: 768px) {
-            .bloco {
+            .menu {
                 flex-direction: column;
-                text-align: center;
-            }
-
-            .texto-primario {
-                text-align: center;
+                gap: 10px;
+                padding: 10px 20px;
             }
 
             .menu h1 {
@@ -241,9 +387,98 @@
                 text-align: center;
             }
 
+            .menu nav ul {
+                gap: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .menu nav ul li a {
+                font-size: 15px;
+            }
+
+            .cabecalho {
+                padding: 100px 15px 50px;
+                min-height: 400px;
+            }
+
+            .cabecalho h1 {
+                font-size: 32px;
+            }
+
+            .cabecalho p {
+                font-size: 16px;
+            }
+
+            .cabecalho .btn-primario {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            .bloco {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .bloco img {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .texto-primario {
+                text-align: center;
+                min-width: unset;
+            }
+
+            .texto-primario h2 {
+                font-size: 28px;
+            }
+
+            .texto-secundario {
+                font-size: 16px;
+            }
+
+            .texto-primario ul {
+                text-align: left;
+                margin: 0 auto;
+                max-width: 250px;
+            }
+
+            .texto-primario ul li:before {
+                margin-left: 0;
+            }
+
+
+            .form-contato {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
             .rodape-conteudo {
                 flex-direction: column;
                 text-align: center;
+                gap: 25px;
+            }
+
+            .rodape-conteudo div {
+                min-width: unset;
+            }
+
+            .rodape-copy {
+                margin-top: 25px;
+            }
+
+            .loc {
+                width: 100% !important;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cabecalho h1 {
+                font-size: 28px;
             }
         }
     </style>
@@ -251,71 +486,76 @@
 
 <body>
 
-    <!-- MENU FIXO -->
     <div class="menu">
         <h1>Organizzi Contabilidade</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#localizacao">Localização</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <!-- CABEÇALHO -->
-    <header class="cabecalho">
-        <img src="../imagens/conta.jpeg" alt="Logo da Empresa" width="400" />
+    <header class="cabecalho" id="home">
+        <h1>Sua Solução Contábil Completa</h1>
+        <p>Expertise e inovação para o crescimento do seu negócio.</p>
+        <a href="#contato" class="btn-primario">Fale Conosco</a>
     </header>
 
-    <!-- CONTEÚDO -->
     <main class="conteudo-geral">
 
-        <!-- BLOCO 1 -->
-        <section class="bloco">
-            <img src="../imagens/foto1.jpeg" alt="Descrição" />
+        <section class="bloco" id="sobre">
+            <img src="../imagens/foto1.jpeg" alt="Descrição" loading="lazy" />
             <div class="texto-primario">
-                <h2>Sobre a empresa</h2>
+                <h2>Sobre a Organizzi</h2>
                 <p class="texto-secundario">Somos uma empresa de contabilidade especializada em serviços de
-                    contabilidade, impostos e consultoria
-                    financeira.</p>
+                    contabilidade, impostos e consultoria financeira, focados em soluções inovadoras para o seu negócio.
+                    Nossa missão é simplificar a burocracia e impulsionar seu crescimento.</p>
             </div>
         </section>
 
-        <!-- BLOCO 2 -->
-        <section class="bloco bloco-reverso">
-            <img src="../imagens/foto2.jpeg" alt="Serviços" />
+        <section class="bloco bloco-reverso" id="servicos">
+            <img src="../imagens/foto2.jpeg" alt="Serviços" loading="lazy" />
             <div class="texto-primario">
-                <h2>Serviços</h2>
+                <h2>Nossos Serviços</h2>
                 <ul class="texto-secundario">
-                    <li>Contabilidade</li>
-                    <li>Impostos</li>
-                    <li>Consultoria financeira</li>
+                    <li>Contabilidade Consultiva e Gerencial</li>
+                    <li>Planejamento Tributário e Fiscal</li>
+                    <li>Gestão de Departamento Pessoal e RH</li>
+                    <li>Abertura e Regularização de Empresas</li>
+                    <li>Consultoria Financeira Personalizada</li>
                 </ul>
             </div>
         </section>
 
-        <!-- BLOCO 3 -->
-        <section class="bloco">
-            <img src="../imagens/foto3.jpeg" alt="Contato" />
+        <section class="bloco" id="contato">
+            <img src="../imagens/foto3.jpeg" alt="Contato" loading="lazy" />
             <div class="texto-primario">
-                <h2>Contato</h2>
-                <p class="texto-secundario">Deixe seus dados que entraremos em contato!</p>
+                <h2>Fale Conosco!</h2>
+                <p class="texto-secundario">Deixe seus dados que nossa equipe entrará em contato para entender suas
+                    necessidades e apresentar a melhor solução!</p>
                 <form class="form-contato">
-                    <input type="text" class="input-contato" placeholder="Nome" />
-                    <input type="email" class="input-contato" placeholder="E-mail" />
-                    <input type="tel" class="input-contato" placeholder="Telefone" />
-                    <button type="submit" class="botao-enviar">Enviar</button>
+                    <input type="text" class="input-contato" placeholder="Nome Completo" required />
+                    <input type="email" class="input-contato" placeholder="E-mail Corporativo" required />
+                    <input type="tel" class="input-contato" placeholder="Telefone (com DDD)" required />
+                    <button type="submit" class="botao-enviar">Enviar Mensagem</button>
                 </form>
             </div>
         </section>
 
     </main>
 
-    <!-- RODAPÉ -->
     <footer class="rodape">
         <div class="rodape-conteudo">
-            <div>
+            <div id="localizacao">
                 <h3>Localização</h3>
                 <p>Brasília - DF<br>Accioly Office Tower - Taguatinga</p>
-                <!-- MAPA -->
-                <iframe class="loc"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3838.4781616312675!2d-48.0561062!3d-15.8314466!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3390223c1863%3A0x6d8fc5f6dafea2aa!2sAccioly%20Office%20Tower!5e0!3m2!1spt-BR!2sbr!4v1753639660267!5m2!1spt-BR!2sbr"
-                    margin=300px width="400" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="loc" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.2452373322137!2d-48.0506371!3d-15.8078979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2e5d0a6a0a01%3A0xc3f6d7a4b8b6d4e!2sAccioly%20Office%20Tower!5e0!3m2!1spt-BR!2sbr!4v1719369974154!5m2!1spt-BR!2sbr" width="100%" height="200"
+                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
             <div>
                 <h3>Contato</h3>
@@ -332,17 +572,26 @@
             </div>
         </div>
         <div class="rodape-copy">
-            &copy; 2025 Organizzi Contabilidade. Todos os direitos reservados.
+            © 2025 Organizzi Contabilidade. Todos os direitos reservados.
         </div>
     </footer>
 
-    <!-- ÍCONE WHATSAPP FLUTUANTE -->
     <div class="whatsapp-flutuante">
         <a href="https://wa.me/5561982064624" target="_blank" title="Fale conosco no WhatsApp">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
         </a>
     </div>
 
+    <script>
+        window.addEventListener('scroll', function() {
+            const menu = document.querySelector('.menu');
+            if (window.scrollY > 50) { // Altere este valor para definir quando a cor deve mudar (ex: 50px de rolagem)
+                menu.classList.add('scrolled');
+            } else {
+                menu.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 
 </html>
