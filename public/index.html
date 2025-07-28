@@ -43,28 +43,34 @@
             background-color: var(--cor-fundo);
             /* ALTERAÇÕES AQUI: Nova cor de fundo */
             line-height: 1.6;
-            padding-top: 80px; /* Mantive o padding-top para o menu fixo */
+            padding-top: 80px;
+            /* Mantive o padding-top para o menu fixo */
         }
 
         /* MENU FIXO - ESTADO INICIAL (TRANSPARENTE) */
         .menu {
-            background-color:rgba(151, 87, 76, 0.7); /* Alterado para transparente */
+            background-color: rgba(151, 87, 76, 0.7);
+            /* Alterado para transparente */
             padding: 21px 30px;
-            position: fixed; 
+            position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: none; /* Sem sombra inicialmente */
+            box-shadow: none;
+            /* Sem sombra inicialmente */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background-color 0.5s ease, box-shadow 0.9s ease; /* Transição suave */
+            transition: background-color 0.5s ease, box-shadow 0.9s ease;
+            /* Transição suave */
         }
 
         /* NOVA CLASSE PARA O MENU AO ROLAR */
         .menu.scrolled {
-            background-color: var(--cor-primaria); /* Cor original ao rolar */
-            box-shadow: 0 4px 9px var(--cor-sombra); /* Sombra ao rolar */
+            background-color: var(--cor-primaria);
+            /* Cor original ao rolar */
+            box-shadow: 0 4px 9px var(--cor-sombra);
+            /* Sombra ao rolar */
         }
 
         .menu h1 {
@@ -508,7 +514,7 @@
     <main class="conteudo-geral">
 
         <section class="bloco" id="sobre">
-            <img src="../imagens/foto1.jpeg" alt="Descrição" loading="lazy" />
+            <img href="https://im.ge/i/JNLIr0" alt="Descrição" loading="lazy" />
             <div class="texto-primario">
                 <h2>Sobre a Organizzi</h2>
                 <p class="texto-secundario">Somos uma empresa de contabilidade especializada em serviços de
@@ -553,8 +559,10 @@
             <div id="localizacao">
                 <h3>Localização</h3>
                 <p>Brasília - DF<br>Accioly Office Tower - Taguatinga</p>
-                <iframe class="loc" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.2452373322137!2d-48.0506371!3d-15.8078979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2e5d0a6a0a01%3A0xc3f6d7a4b8b6d4e!2sAccioly%20Office%20Tower!5e0!3m2!1spt-BR!2sbr!4v1719369974154!5m2!1spt-BR!2sbr" width="100%" height="200"
-                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                <iframe class="loc"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.2452373322137!2d-48.0506371!3d-15.8078979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2e5d0a6a0a01%3A0xc3f6d7a4b8b6d4e!2sAccioly%20Office%20Tower!5e0!3m2!1spt-BR!2sbr!4v1719369974154!5m2!1spt-BR!2sbr"
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
             <div>
@@ -583,7 +591,7 @@
     </div>
 
     <script>
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const menu = document.querySelector('.menu');
             if (window.scrollY > 50) { // Altere este valor para definir quando a cor deve mudar (ex: 50px de rolagem)
                 menu.classList.add('scrolled');
